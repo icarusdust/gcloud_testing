@@ -1,4 +1,4 @@
-FILE=$(awk 1 ORS='\\n' $CM_BUILD_DIR/flavors_testing/ios/Runner/creds.json)
+FILE=$(awk 1 ORS='\\n' $CM_BUILD_DIR/gcloud_testing/android/creds.json)
 curl -H "Content-Type: application/json" -H "x-auth-token: kjTAfwKBKgeHyPLOVqAd6AzkEycsuY-alno6Zq8Ezzo" \
 --data '{
     "appId": "625a9cbf5d82902e63ca38bf", 
