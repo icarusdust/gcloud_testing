@@ -16,8 +16,7 @@ workflows:
     scripts:
       - name: Set up key properties
         script: |
-          export GCLOUD_SERVICE_ACCOUNT_CREDENTIALS=`jq @json < service_account_test.json`
-          echo $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS 
+          echo $GCLOUD_CREDENTIALS
           echo $FCI_KEYSTORE | base64 --decode > /tmp/keystore.keystore
       - name: Set up local.properties
         script: |
