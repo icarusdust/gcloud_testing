@@ -9,7 +9,7 @@ workflows:
         CM_KEY_ALIAS_PASSWORD: Encrypted(Z0FBQUFBQmcwbDdiZmM5aEJpSlVKUlNUUVRhUVczUnh0M1NaaFJ6NjJTMWhiT2R0VHJMdDBpOUM3aDhsU1l2aUtMNzNvd2Q5YlF1dlBYWmJpUFVYakhsUGhHVC1nSW41bEE9PQ==) # <-- Put your encrypted keystore alias password here
         CM_KEYSTORE_PATH: /tmp/keystore.keystore
         CM_KEY_ALIAS_USERNAME: Encrypted(Z0FBQUFBQmcwbDcweUxYUmxxaTVEeFhxY0hTQWVteUlTMWhiNzVpazlERUFNR1g5akMxLTA4NjVKaXJ2dEdVdDhDRVV5WlNqa25kTW1raDJuYlRiT2o2YW1qTmpMWDc4akE9PQ==) # <-- Put your encrypted keystore alias username here 
-        GCLOUD_SERVICE_ACCOUNT_CREDENTIALS: _
+        GCLOUD_CREDENTIALS: _
       flutter: stable
       xcode: latest
       cocoapods: default
@@ -18,7 +18,6 @@ workflows:
         script: |
           export GCLOUD_SERVICE_ACCOUNT_CREDENTIALS=`jq @json < service_account_test.json`
           echo $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS 
-          "{\"service_account\":\"value\"}"
           echo $FCI_KEYSTORE | base64 --decode > /tmp/keystore.keystore
       - name: Set up local.properties
         script: |
@@ -43,5 +42,5 @@ workflows:
       - flutter_drive.log
     publishing:
       google_play:
-        credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
+        credentials: $GCLOUD_CREDENTIALS
         track: internal
