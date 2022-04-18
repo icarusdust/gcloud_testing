@@ -11,7 +11,10 @@
 #     }
 # }' \
 # https://api.codemagic.io/builds
+export GCLOUD_SERVICE_ACCOUNT_CREDENTIALS=`jq @json < service_account_test.json`
 
+echo $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS 
+# "{\"service_account\":\"value\"}"
 
 curl -H "Content-Type: application/json" -H "x-auth-token: kjTAfwKBKgeHyPLOVqAd6AzkEycsuY-alno6Zq8Ezzo" \
 --data '{
@@ -20,7 +23,7 @@ curl -H "Content-Type: application/json" -H "x-auth-token: kjTAfwKBKgeHyPLOVqAd6
     "branch": "master", 
     "environment": { 
         "variables": { 
-            "GCLOUD_CREDENTIALS": $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
+            "GCLOUD_CREDENTIALS": "$GCLOUD_SERVICE_ACCOUNT_CREDENTIALS"
         }
     }
 }' \
